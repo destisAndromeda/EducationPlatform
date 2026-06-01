@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2. LF trenažér</title>
+  <meta name="description" content="Generátor testů s podporou odeslání odpovědí a připravenou integrací Solana/web3">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/static/styles/main.css">
+</head>
+<body>
+  <header class="app-header">
+    <div class="container row space-between center">
+      <div>
+        <h1 class="title">2. LF trenažér</h1>
+        <p class="subtitle">Generování testů podle předmětu s architekturou připravenou na Solana/web3</p>
+      </div>
+      <div class="row gap-sm">
+        <button id="wallet-connect-btn" class="button button-secondary" type="button">Připojit peněženku</button>
+        <button id="theme-toggle-btn" class="button button-secondary" type="button">Téma</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container app-main">
+    <section class="panel controls">
+      <div class="controls-grid">
+        <label class="control">
+          <span>Předmět</span>
+          <select id="subject-select"></select>
+        </label>
+        <label class="control">
+          <span>Počet otázek</span>
+          <input id="questions-count" type="number" min="1" max="200" value="30">
+        </label>
+      </div>
+      <div class="row gap-sm">
+        <button id="generate-btn" class="button" type="button">Vygenerovat variantu</button>
+        <button id="refresh-btn" class="button button-secondary" type="button">Obnovit předměty</button>
+      </div>
+      <p id="status-line" class="status" aria-live="polite"></p>
+    </section>
+
+    <section class="panel">
+      <div class="row space-between center">
+          <h2 class="section-title">Otázky</h2>
+          <div class="row center gap-sm">
+            <span id="success-counter" class="badge">0/30</span>
+            <span id="questions-counter" class="badge">0</span>
+          </div>
+        </div>
+      <div id="questions-list" class="questions-list"></div>
+    </section>
+
+    <section class="panel submit-panel">
+      <p class="submit-hint">Označ správné možnosti u každé otázky (lze vybrat více odpovědí).</p>
+      <button id="submit-btn" class="button button-submit" type="button" disabled>Odeslat odpovědi</button>
+    </section>
+  </main>
+
+  <template id="question-card-template">
+    <article class="question-card">
+      <div class="question-meta">
+        <span data-role="subject" class="badge"></span>
+        <span data-role="section" class="badge"></span>
+      </div>
+      <h3 data-role="question" class="question-text"></h3>
+      <ul data-role="options" class="options-list"></ul>
+    </article>
+  </template>
+
+  <script type="module" src="/static/js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+target
+tests
+server.log
+error.log
+questions.db
+.env
